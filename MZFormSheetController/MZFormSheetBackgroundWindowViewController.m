@@ -29,11 +29,17 @@
 
 + (instancetype)viewControllerWithPreferredStatusBarStyle:(UIStatusBarStyle)preferredStatusBarStyle
                                    prefersStatusBarHidden:(BOOL)prefersStatusBarHidden
+                           supportedInterfaceOrientations:(UIInterfaceOrientationMask)supportedInterfaceOrientations
 {
     MZFormSheetBackgroundWindowViewController *viewController = [[self alloc] init];
     viewController.preferredStatusBarStyleForBackgroundWindow = preferredStatusBarStyle;
     viewController.prefersStatusBarHiddenForBackgroundWindow = prefersStatusBarHidden;
+    viewController.prefersSupportedInterfaceOrientations = supportedInterfaceOrientations;
     return viewController;
+}
+
+- (UIInterfaceOrientationMask)supportedInterfaceOrientations {
+    return self.prefersSupportedInterfaceOrientations;
 }
 
 - (UIStatusBarStyle)preferredStatusBarStyle {

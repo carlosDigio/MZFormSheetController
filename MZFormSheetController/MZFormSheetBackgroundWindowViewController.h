@@ -28,8 +28,10 @@
 @interface MZFormSheetBackgroundWindowViewController : UIViewController
 @property (nonatomic, assign) UIStatusBarStyle preferredStatusBarStyleForBackgroundWindow;
 @property (nonatomic, assign) BOOL prefersStatusBarHiddenForBackgroundWindow;
+@property (nonatomic, assign) UIInterfaceOrientationMask prefersSupportedInterfaceOrientations;
 
 + (instancetype)viewControllerWithPreferredStatusBarStyle:(UIStatusBarStyle)preferredStatusBarStyle
-                                   prefersStatusBarHidden:(BOOL)prefersStatusBarHidden;
+                                   prefersStatusBarHidden:(BOOL)prefersStatusBarHidden
+                           supportedInterfaceOrientations:(UIInterfaceOrientationMask)supportedInterfaceOrientations;
 
 @end

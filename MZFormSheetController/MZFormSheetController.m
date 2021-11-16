@@ -107,7 +107,10 @@ static BOOL MZFromSheetControllerIsViewControllerBasedStatusBarAppearance(void) 
             UIViewController* statusBarHiddenResponsibleViewController = [mostTopViewController mz_childTargetViewControllerForStatusBarHidden];
             
             // set mostTopViewController prefferedStatusBarStyle to empty viewController
-            _instanceOfFormSheetBackgroundWindow.rootViewController = [MZFormSheetBackgroundWindowViewController viewControllerWithPreferredStatusBarStyle:statusBarStyleResponsibleViewController.preferredStatusBarStyle prefersStatusBarHidden:statusBarHiddenResponsibleViewController.prefersStatusBarHidden];
+            id controller = [MZFormSheetBackgroundWindowViewController viewControllerWithPreferredStatusBarStyle:statusBarStyleResponsibleViewController.preferredStatusBarStyle
+                                                                                                     prefersStatusBarHidden:statusBarHiddenResponsibleViewController.prefersStatusBarHidden
+                                                                                             supportedInterfaceOrientations:mostTopViewController.supportedInterfaceOrientations];
+           _instanceOfFormSheetBackgroundWindow.rootViewController = controller;
         }
 
         if (MZSystemVersionGreaterThanOrEqualTo_iOS8() && UIInterfaceOrientationIsLandscape([UIApplication sharedApplication].statusBarOrientation) && !MZSystemVersionGreaterThanOrEqualTo_iOS9()) {
